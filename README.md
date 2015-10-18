@@ -64,7 +64,7 @@ To run Samu (Perez), type the following command
 ```
 If you use ncurses you will see something like this:
 
-![pereztui](https://cloud.githubusercontent.com/assets/3148120/10558577/2b36c840-74d5-11e5-9174-f5f8bd263cb3.png)
+![hezron_tui](https://github-cloud.s3.amazonaws.com/assets/3148120/10565786/c24ad744-75d9-11e5-99c2-f3ae68d5ebc6.png)
 
 In another terminal window, run the command
 ```
