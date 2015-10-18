@@ -429,6 +429,7 @@ public:
         //prcps[triplet] = new Perceptron ( 4, 10*80, 256, 32,  1 );
         //prcps[triplet] = new Perceptron ( 5, 10*80, 256, 128, 32, 1 ); // 355
         //prcps[triplet] = new Perceptron ( 5, 10*80, 196, 32,  32, 1 ); // 302
+	//prcps[triplet] = new Perceptron ( 5, 10*80, 400, 400,  32, 1 ); // 302
 #endif
       }
 

@@ -284,7 +284,7 @@ public:
   {
     return vi.get_min_reward();
   }
-  
+
 private:
 
   class VisualImagery
@@ -333,6 +333,9 @@ private:
 
       std::string prg;
       stmt_counter = 0;
+#ifdef PYRAMID_VI
+      SPOTriplets pyramid;
+#endif
       while ( !run.empty() )
         {
           auto triplet = run.front();
@@ -341,9 +344,22 @@ private:
           prg += triplet.p.c_str();
           prg += triplet.o.c_str();
 
+#ifdef PYRAMID_VI
+          pyramid.push_back ( triplet );
+          SPOTriplets reverse_pyramid ( pyramid.size() );
+          std::reverse_copy ( pyramid.begin(), pyramid.end(), reverse_pyramid.begin() );
+
+          int cnt {0};
+          for ( SPOTriplets::iterator it=reverse_pyramid.begin(); it!=reverse_pyramid.end() && cnt < 80; ++it )
+            //while ( cnt < 80 )
+            //cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
+            cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", ( *it ).s.c_str(), ( *it ).p.c_str(), ( *it ).o.c_str() );
+#else
           int cnt {0};
           while ( cnt < 80 )
             cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
+#endif
+
 
 #ifndef CHARACTER_CONSOLE
           char font[] = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf";
