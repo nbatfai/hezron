@@ -67,7 +67,8 @@ project(SAMU)
  
 # Hezron 
 add_definitions(-DPYRAMID_VI)
- 
+# add_definitions(-DJUSTIFY_VI)
+
 # Judah 
 add_definitions(-DTRIPLET_CACHE)
 

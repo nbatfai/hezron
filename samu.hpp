@@ -354,10 +354,12 @@ private:
             //while ( cnt < 80 )
             //cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
             cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", ( *it ).s.c_str(), ( *it ).p.c_str(), ( *it ).o.c_str() );
-#else
+#elif JUSTIFY_VI
           int cnt {0};
           while ( cnt < 80 )
             cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
+#else
+            std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );	  
 #endif
 
 
