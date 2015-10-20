@@ -359,7 +359,7 @@ private:
           while ( cnt < 80 )
             cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
 #else
-            std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );	  
+          std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
 #endif
 
 
@@ -473,9 +473,9 @@ private:
 
 #endif
 
-      std::cerr << std::chrono::duration_cast<std::chrono::milliseconds> (
-                  std::chrono::high_resolution_clock::now() - start ).count()
-                << " ms " <<  std::endl;
+      std::cerr << std::chrono::duration_cast<std::chrono::milliseconds> ( std::chrono::high_resolution_clock::now() - start ).count()
+                << " ms "
+                <<  std::endl;
 
 #ifndef CHARACTER_CONSOLE
 
