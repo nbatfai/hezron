@@ -312,6 +312,11 @@ private:
           program.push ( triplet );
         }
 
+      if ( feelings.size() >= stmt_max )
+        feelings.pop();
+
+      feelings.push ( ql.feeling() );
+
       boost::posix_time::ptime now = boost::posix_time::second_clock::universal_time();
 
 #ifndef CHARACTER_CONSOLE
@@ -328,6 +333,7 @@ private:
       char *stmt_buffer_p = stmt_buffer;
 
       std::queue<SPOTriplet> run = program;
+      std::queue<Feeling> feels = feelings;
 
 #ifndef Q_LOOKUP_TABLE
 
@@ -360,13 +366,16 @@ private:
             cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
 #else
 //          std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
-	  
-	  std::string s = ql.feeling();
-	  if(s.length() > 0)
-          std::snprintf ( stmt_buffer, 1024, "%s.%s(%s); %s", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str(), s.c_str() );
-	  else
-std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
-	    
+
+          if ( !feels.empty() )
+            {
+              auto s = feels.front();
+
+              //if(s.length() > 0)
+              std::snprintf ( stmt_buffer, 1024, "%s.%s(%s); %s", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str(), s.c_str() );
+              // else
+//std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
+            }
 #endif
 
 
@@ -387,6 +396,7 @@ std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_
 #endif
 
           run.pop();
+          feels.pop();
         }
 
 #ifndef CHARACTER_CONSOLE
@@ -558,6 +568,7 @@ std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_
     Samu &samu;
     QL ql;
     std::queue<SPOTriplet> program;
+    std::queue<Feeling> feelings;
     int stmt_counter {0};
     static const int stmt_max = 10;
 
