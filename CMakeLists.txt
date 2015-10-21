@@ -66,7 +66,7 @@ project(SAMU)
  #set(DISP_CURSES OFF)
  
 # Hezron 
-add_definitions(-DPYRAMID_VI)
+# add_definitions(-DPYRAMID_VI)
 # add_definitions(-DJUSTIFY_VI)
 
 # Judah 
