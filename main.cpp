@@ -249,8 +249,8 @@ int main ( int argc, char **argv )
   //for ( int ii {0}; samu.run() && ii < 1000 + 4000 + 5000 + 4000 + 1000; ++ii )
   for ( int ii {0}; samu.run() /*&& ii < 50000*/; ++ii )
 #else
-  for ( ; samu.run(); )
-  //for ( int ii {0}; samu.run() && ii < 50; ++ii )
+  //for ( ; samu.run(); )
+  for ( int ii {0}; samu.run() && ii < 50; ++ii )
 #endif
     {
       auto start = std::chrono::high_resolution_clock::now();
@@ -391,7 +391,7 @@ int main ( int argc, char **argv )
                     << "), brel%: "
                     << mbrel
                     << ", "
-                    << std::chrono::duration_cast<std::chrono::milliseconds> ( std::chrono::high_resolution_clock::now() - start ).count()
+  //                  << std::chrono::duration_cast<std::chrono::milliseconds> ( std::chrono::high_resolution_clock::now() - start ).count()
                     << " ms "
                     << std::endl;
 
