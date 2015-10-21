@@ -320,12 +320,12 @@ class QL
 public:
   QL ( )
   {
-        for ( int i{0}; i<30; ++i )
-          {	    
-	    std::stringstream ss;
-	    ss << "Feeling" << i << i << i << i;                        
-            prcps_f[ss.str()] = new Perceptron ( 3, 10*80, 32,  1 ); //exp.a1 // 302	    
-	  }
+    for ( int i {0}; i<30; ++i )
+      {
+        std::stringstream ss;
+        ss << "Feeling" << i << i << i << i;
+        prcps_f[ss.str()] = new Perceptron ( 3, 10*80, 32,  1 ); //exp.a1 // 302
+      }
   }
 
   QL ( SPOTriplet triplet )
@@ -524,16 +524,16 @@ public:
         for ( int z {0}; z<10; ++z )
           {
             double nn_q_s_a = ( *prcps[prev_action] ) ( prev_image );
-	    
-	    std::cerr << "!!!!!!!!!<" << prev_feeling << ">!!!!!!!!" << std::endl;
-	    
+
+            std::cerr << "!!!!!!!!!<" << prev_feeling << ">!!!!!!!!" << std::endl;
+
             double nn_q_s_a_f = ( *prcps_f[prev_feeling] ) ( prev_image );
 
             double q_q_s_a = nn_q_s_a +
                              alpha ( frqs[prev_action][prev_state] ) *
                              ( reward + gamma * max_ap_q_sp_ap - nn_q_s_a );
 
-			     double q_q_s_a_f = nn_q_s_a_f +
+            double q_q_s_a_f = nn_q_s_a_f +
                                alpha ( frqs_f[prev_feeling][prev_state] ) *
                                ( reward + gamma * max_ap_q_sp_ap_f - nn_q_s_a_f );
 
@@ -547,7 +547,7 @@ public:
                       << " "
                       << nn_q_s_a
                       << std::endl;
-		      
+
             std::cerr << "###Feelings "
                       << q_q_s_a_f - nn_q_s_a_f
                       << " "
@@ -666,8 +666,8 @@ public:
   Feeling feeling ( void )
   {
     return prev_feeling;
-  }  
-  
+  }
+
   double alpha ( int n )
   {
     return 1.0/ ( ( ( double ) n ) + 1.0 );
@@ -886,7 +886,7 @@ private:
   std::map<Feeling, std::map<std::string, int>> frqs_f;
 
   SPOTriplet prev_action;
-  Feeling prev_feeling{"Hello, World!"};
+  Feeling prev_feeling {"Hello, World!"};
 
   std::string prev_state;
 
