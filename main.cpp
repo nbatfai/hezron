@@ -240,7 +240,7 @@ int main ( int argc, char **argv )
   int N_e {25};
   std::string training_file = samu.get_training_file();
 
-  //samu.set_training_file ( "bbe" );
+  samu.set_training_file ( "bbe" );
 
   double prev_mbrel {0};
   int mbrelc {0};
@@ -250,7 +250,7 @@ int main ( int argc, char **argv )
   for ( int ii {0}; samu.run() /*&& ii < 50000*/; ++ii )
 #else
   for ( ; samu.run(); )
-  //for ( int ii {0}; samu.run() && ii < 50; ++ii )
+    //for ( int ii {0}; samu.run() && ii < 50; ++ii )
 #endif
     {
       auto start = std::chrono::high_resolution_clock::now();
