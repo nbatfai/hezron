@@ -327,7 +327,7 @@ public:
     //std::uniform_int_distribution<int> dist ( 0, 6 );
     std::uniform_int_distribution<int> dist ( 0, 9 );
     //std::uniform_int_distribution<int> dist (48, 126 );
-    for ( int i {0}; i<30; ++i )
+    for ( int i {0}; i<10; ++i )
       {
         std::stringstream ss;
         for ( int j {0}; j<40; ++j )
