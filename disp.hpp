@@ -140,10 +140,38 @@ public:
       }
   }
 
+  void vi ( char* vi_console )
+  {
+    if ( ncurses_mutex.try_lock() )
+      {
+        ui();
+        werase ( vi_w );
+
+        for ( int i {0}; i<10; ++i )
+          {
+            wmove ( vi_w, i+1, 1 );
+            for ( int j {0}; j<80; ++j )
+              {
+                char c = vi_console[i*80+j];
+
+                if ( isprint ( c ) )
+                  {
+                    waddch ( vi_w, c );
+                  }
+              }
+          }
+
+        box ( vi_w, 0, 0 );
+        mvwprintw ( vi_w, 0, 1, " Samu's visual imagery " );
+        wrefresh ( vi_w );
+        ncurses_mutex.unlock();
+      }
+  }
+
   void log ( std::string msg )
   {
     ncurses_mutex.lock();
-    ui();    
+    ui();
     msg =  msg + "\n";
     waddstr ( log_iw, msg.c_str() );
     box ( log_w, 0, 0 );

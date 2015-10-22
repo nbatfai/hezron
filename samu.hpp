@@ -435,7 +435,8 @@ private:
         }
 
 #ifdef DISP_CURSES
-      samu.disp.vi ( con.str() );
+//      samu.disp.vi ( con.str() );
+      samu.disp.vi ( &console[0][0] );
 #endif
 
 #endif
