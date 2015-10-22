@@ -330,7 +330,7 @@ public:
     for ( int i {0}; i<30; ++i )
       {
         std::stringstream ss;
-        for ( int j {0}; j<30; ++j )
+        for ( int j {0}; j<40; ++j )
           {
 	    //char c = dist ( gen );
 	    //ss << c;

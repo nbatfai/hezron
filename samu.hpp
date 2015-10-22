@@ -372,7 +372,7 @@ private:
               std::stringstream ss;
               ss << triplet.s << "." << triplet.p << "(" << triplet.o << ");";
               std::string spo = ss.str();
-              std::snprintf ( stmt_buffer, 1024, "%-35s %s", spo.c_str(), s.c_str() );
+              std::snprintf ( stmt_buffer, 1024, "%-30s %s", spo.c_str(), s.c_str() );
             }
 #endif
 
