@@ -320,10 +320,17 @@ class QL
 public:
   QL ( )
   {
+
+    std::random_device init;
+    std::default_random_engine gen {init() };
+    std::uniform_int_distribution<int> dist ( 0, 9 );
     for ( int i {0}; i<30; ++i )
       {
         std::stringstream ss;
-        ss << "Feeling" << i << i << i << i;
+        for ( int j {0}; j<30; ++j )
+          {
+            ss << dist ( gen );
+          }
         prcps_f[ss.str()] = new Perceptron ( 3, 10*80, 32,  1 ); //exp.a1 // 302
       }
   }
@@ -490,7 +497,7 @@ public:
       //( triplet == prev_action ) ?1.0:-2.0;
       ( triplet == prev_action ) ?max_reward:min_reward;
 
-    Feeling feeling = "Feeling1111";
+    Feeling feeling = prcps_f.begin()->first;
 
     if ( prcps.find ( triplet ) == prcps.end() )
       {

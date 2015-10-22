@@ -240,7 +240,7 @@ int main ( int argc, char **argv )
   int N_e {25};
   std::string training_file = samu.get_training_file();
 
-  samu.set_training_file ( "bbe" );
+  //samu.set_training_file ( "bbe" );
 
   double prev_mbrel {0};
   int mbrelc {0};
