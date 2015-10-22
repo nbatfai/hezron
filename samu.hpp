@@ -365,16 +365,14 @@ private:
           while ( cnt < 80 )
             cnt += std::snprintf ( stmt_buffer+cnt, 1024-cnt, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
 #else
-//          std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
-
+          //std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
           if ( !feels.empty() )
             {
               auto s = feels.front();
-
-              //if(s.length() > 0)
-              std::snprintf ( stmt_buffer, 1024, "%s.%s(%s); %s", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str(), s.c_str() );
-              // else
-//std::snprintf ( stmt_buffer, 1024, "%s.%s(%s);", triplet.s.c_str(), triplet.p.c_str(), triplet.o.c_str() );
+              std::stringstream ss;
+              ss << triplet.s << "." << triplet.p << "(" << triplet.o << ");";
+              std::string spo = ss.str();
+              std::snprintf ( stmt_buffer, 1024, "%-35s %s", spo.c_str(), s.c_str() );
             }
 #endif
 
@@ -424,12 +422,15 @@ private:
               img_input[i*80+j] = ( ( double ) console[i][j] ) / 255.0;
 
 #ifdef DISP_CURSES
-              if ( isgraph ( console[i][j] ) )
+              //if ( isgraph ( console[i][j] ) )
+              if ( isprint ( console[i][j] ) )
                 ci += console[i][j];
 #endif
             }
+
 #ifdef DISP_CURSES
           con << " " << i << ". " << ( ( ci.length() <75 ) ?ci:ci.substr ( 0, 75 ) ) << std::endl;
+
 #endif
         }
 

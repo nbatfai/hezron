@@ -532,8 +532,6 @@ public:
           {
             double nn_q_s_a = ( *prcps[prev_action] ) ( prev_image );
 
-            std::cerr << "!!!!!!!!!<" << prev_feeling << ">!!!!!!!!" << std::endl;
-
             double nn_q_s_a_f = ( *prcps_f[prev_feeling] ) ( prev_image );
 
             double q_q_s_a = nn_q_s_a +
