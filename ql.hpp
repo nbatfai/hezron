@@ -323,12 +323,17 @@ public:
 
     std::random_device init;
     std::default_random_engine gen {init() };
+    //std::uniform_int_distribution<int> dist ( 0, 1 );
+    //std::uniform_int_distribution<int> dist ( 0, 6 );
     std::uniform_int_distribution<int> dist ( 0, 9 );
+    //std::uniform_int_distribution<int> dist (48, 126 );
     for ( int i {0}; i<30; ++i )
       {
         std::stringstream ss;
         for ( int j {0}; j<30; ++j )
           {
+	    //char c = dist ( gen );
+	    //ss << c;
             ss << dist ( gen );
           }
         prcps_f[ss.str()] = new Perceptron ( 3, 10*80, 32,  1 ); //exp.a1 // 302
