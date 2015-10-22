@@ -401,17 +401,17 @@ int main ( int argc, char **argv )
             mbrelc = 0;
 
           //if ( /*mbrel > 35.0 &&*/ mbrelc > 50 && cnt-bad <= cnt- ( cnt/10 ) )
-          if ( /*mbrel > 35.0 &&*/ mbrelc > 10 && bad >= 2 )
+          if ( /*mbrel > 35.0 &&*/ mbrelc > 50 && bad > 2 )
             {
               samu.scale_N_e();
-              //N_e += 5;
+              N_e += 3;
               mbrelc = 0;
               std::cerr << " iter, N structure rescaled " << std::endl;
 
               //} else if(!bad)
               //} else if(bad <cnt/10)
             }
-          else if ( bad < 2 )
+          else if ( bad <= 2 )
             {
 
               if ( ++reinforcement == 20 )

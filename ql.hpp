@@ -697,6 +697,11 @@ public:
 
   }
 
+  double sigmoid ( int n )
+  {
+    return 1.0/ ( 1.0 + exp ( -n ) );
+  }
+  
   void scalen ( void )
   {
 
@@ -706,7 +711,8 @@ public:
         for ( std::map<std::string, int>::iterator itt=it->second.begin(); itt!=it->second.end(); ++itt )
           {
             //itt->second -= ( itt->second / 5 );
-            itt->second *= .65;
+            //itt->second *= .65;
+	    itt->second *= sigmoid(itt->second);
           }
       }
 
