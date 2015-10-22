@@ -336,7 +336,7 @@ public:
 	    //ss << c;
             ss << dist ( gen );
           }
-        prcps_f[ss.str()] = new Perceptron ( 3, 10*80, 32,  1 ); //exp.a1 // 302
+        prcps_f[ss.str()] = new Perceptron ( 3, 10*80, 16,  1 ); //exp.a1 // 302
       }
   }
 
@@ -711,8 +711,8 @@ public:
         for ( std::map<std::string, int>::iterator itt=it->second.begin(); itt!=it->second.end(); ++itt )
           {
             //itt->second -= ( itt->second / 5 );
-            //itt->second *= .65;
-	    itt->second *= sigmoid(itt->second);
+            itt->second *= .65;
+	    //itt->second *= sigmoid(itt->second);
           }
       }
 
