@@ -88,12 +88,21 @@ public:
     */
     init_pair ( 1, COLOR_BLACK, COLOR_WHITE );
     init_pair ( 2, COLOR_WHITE, COLOR_YELLOW );
-    init_pair ( 3, COLOR_BLACK, COLOR_WHITE );
+    init_pair ( 3, COLOR_WHITE, COLOR_RED );
+
+    init_pair ( 4, COLOR_RED, COLOR_YELLOW );
+    init_pair ( 5, COLOR_BLACK, COLOR_GREEN );
+    init_pair ( 6, COLOR_BLUE, COLOR_YELLOW );
+    init_pair ( 7, COLOR_BLACK, COLOR_MAGENTA );
+    init_pair ( 8, COLOR_CYAN, COLOR_RED );
+    init_pair ( 9, COLOR_BLUE, COLOR_RED );
+    init_pair ( 10, COLOR_MAGENTA, COLOR_BLACK );
+    init_pair ( 11, COLOR_GREEN, COLOR_MAGENTA );
 
     wbkgd ( vi_w, COLOR_PAIR ( 1 ) );
     wbkgd ( log_w, COLOR_PAIR ( 2 ) );
     wbkgd ( log_iw, COLOR_PAIR ( 2 ) );
-    wbkgd ( shell_w, COLOR_PAIR ( 3 ) );
+    wbkgd ( shell_w, COLOR_PAIR ( 1 ) );
 
     nodelay ( shell_w, TRUE );
     keypad ( shell_w, TRUE );
@@ -144,6 +153,7 @@ public:
   {
     if ( ncurses_mutex.try_lock() )
       {
+	
         ui();
         werase ( vi_w );
 
@@ -156,7 +166,15 @@ public:
 
                 if ( isprint ( c ) )
                   {
-                    waddch ( vi_w, c );
+                    if ( isdigit ( c ) )
+                      {
+                        wattron ( vi_w,COLOR_PAIR ( c-'0'+2 ) );
+                        waddch ( vi_w, c );
+                        wattroff ( vi_w,COLOR_PAIR ( c-'0'+2 ) );
+                      }
+                    else
+                      waddch ( vi_w, c );
+
                   }
               }
           }
