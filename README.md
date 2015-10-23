@@ -1,5 +1,12 @@
 # hezron
-"The son of Perez is Hezron."
+"The son of Perez is Hezron." Hezron gives the opportunity to experiment with different arrangements of SPO triplets in the visual imagery.
+
+## Deep Q learning algorithms for feelings
+
+The branch called "feelings2" tries to introduce feelings as another level of the deep Q learning of the triplet prediction. Samu's
+feelings are internal states that influence the operation od Samu's cognitive engine.
+
+![hezrontui2](https://cloud.githubusercontent.com/assets/3148120/10677104/b74066f0-790a-11e5-9044-ead867835a7f.png)
 
 ## Genealogy of Hezron
 
@@ -14,8 +21,10 @@ The main purpose of this project is to allow the evaluation and verification of 
 5. [Super-Judah](https://github.com/nbatfai/super-judah)
 6. [Perez](https://github.com/nbatfai/perez)
 *"The son of Judah is Perez."* The project called Perez allows to perform experiments to test several parameter settings. Here each experiment is implemented as a separate git branch.
-7. [Hezron](https://github.com/nbatfai/Hezron)
-*"The son of Perez is Hezron."* 
+7. [Hezron](https://github.com/nbatfai/hezron)
+*"The son of Perez is Hezron."* The project called Hezron gives the opportunity to experiment with different arrangements of SPO triplets in the visual imagery.
+8. [Ram](https://github.com/nbatfai/ram)
+*"The son of Hezron is Ram."* The project called Ram allows to experiment with different deep Q learning algorithms to express feelings when he is talking.
 
 
 ### Installation of Hezron
@@ -58,7 +67,7 @@ If `cmake .` finishes without problems you can run the `make` command to build S
 
 ### Running
 
-To run Samu (Perez), type the following command
+To run Samu (Hezron), type the following command
 ```
 ./samu 2>out
 ```
