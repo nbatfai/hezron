@@ -1,5 +1,6 @@
 # hezron
 "The son of Perez is Hezron." Hezron gives the opportunity to experiment with different arrangements of SPO triplets in the visual imagery.
+See also the page [Family Robotics - Deep Q-learning with Samu](http://shrek.unideb.hu/~nbatfai/)
 
 ## Deep Q learning algorithms for feelings
 
